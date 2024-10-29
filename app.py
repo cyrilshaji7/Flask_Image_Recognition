@@ -11,7 +11,6 @@ app = Flask(__name__)
 def main():
     return render_template("index.html")
 
-
 # Prediction route
 @app.route('/prediction', methods=['POST'])
 def predict_image_file():
