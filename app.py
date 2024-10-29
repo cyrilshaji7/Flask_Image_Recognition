@@ -11,6 +11,9 @@ app = Flask(__name__)
 # Home route
 @app.route("/")
 def main():
+    """
+    Render the main page for image upload.
+    """
     return render_template("index.html")
 
 # Prediction route
@@ -18,6 +21,8 @@ def main():
 def predict_image_file():
     """
     Process the uploaded image file and return predictions.
+    Handles FileNotFoundError and ValueError specifically,
+    and catches other unexpected errors.
     """
     try:
         if request.method == 'POST':
@@ -27,10 +32,15 @@ def predict_image_file():
     except FileNotFoundError:  # Catch specific exceptions
         error = "File cannot be processed."
         return render_template("result.html", err=error)
-    except Exception:  # Catch other general exceptions
-        error = "An unexpected error occurred."
+    except ValueError as ve:  # Catch specific value errors
+        error = f"Value error: {str(ve)}"
         return render_template("result.html", err=error)
+    except Exception as e:  # Catch other general exceptions
+        error = f"An unexpected error occurred: {str(e)}"
+        return render_template("result.html", err=error)
+    return render_template("result.html")  # Ensure consistent return
 
 # Driver code
 if __name__ == "__main__":
+    
     app.run(port=9000, debug=True)

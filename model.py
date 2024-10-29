@@ -6,6 +6,7 @@ from keras.models import load_model
 from keras.utils import img_to_array
 import numpy as np
 from PIL import Image
+from unittest.mock import mock_open, patch
 
 # Loading model
 model = load_model("digit_model.h5")
@@ -30,3 +31,4 @@ def predict_result(predict):
     """
     pred = model.predict(predict)
     return np.argmax(pred[0], axis=-1)
+
