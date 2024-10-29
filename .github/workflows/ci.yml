@@ -18,7 +18,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install Flask keras numpy Pillow pytest tensowflow pylint # Install pylint
+          pip install Flask keras numpy Pillow pytest tensorflow==2.13.0 pylint # Install pylint
 
       - name: Run pylint
         run: pylint .  # Replace with your actual code directory
@@ -38,7 +38,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install Flask keras numpy Pillow pytest tensowflow # Install pytest
+          pip install Flask keras numpy Pillow pytest tensorflow==2.13.0 # Install pytest
 
       - name: Run pytest
         run: pytest tests_main.py  # Ensure this points to your tests folder
