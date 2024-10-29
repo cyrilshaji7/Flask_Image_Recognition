@@ -1,5 +1,7 @@
-Flask==2.2.1
+Flask
 keras==2.9.0
 numpy==1.23.2
-Pillow==9.3.0
-tensorflow==2.10.0
+Pillow
+tensorflow==2.13.0
+pylint
+pytest
