@@ -18,7 +18,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install Flask keras numpy Pillow pytest tensorflow==2.13.0 pylint # Install pylint
+          pip install Flask pylint # Install pylint
 
       - name: Run pylint
         run: pylint .  # Replace with your actual code directory
