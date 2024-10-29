@@ -1,7 +1,6 @@
 import os
 import pytest
-from flask import Flask
-from app import app 
+from app import app
 import numpy as np
 
 # Create a test client
@@ -29,5 +28,3 @@ def test_preprocess_img():
     img_path = 'test_images\\1\\1.jpeg'  # Provide a valid image path
     img = preprocess_img(img_path)
     assert img.shape == (1, 224, 224, 3)  # Check the shape of the processed image
-
-

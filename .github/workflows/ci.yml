@@ -21,7 +21,7 @@ jobs:
           pip install pylint  # Install pylint
 
       - name: Run pylint
-        run: pylint Flask_Image_Recognition  # Replace with your actual code directory
+        run: pylint .  # Replace with your actual code directory
 
   test:
     runs-on: windows-latest  # Run on the latest version of Windows
