@@ -1,0 +1,44 @@
+name: CI Pipeline
+
+on: [push, pull_request]  # Triggers on push and pull request events
+
+jobs:
+  lint:
+    runs-on: windows-latest  # Run on the latest version of Windows
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2  # Checkout the repository
+
+      - name: Set up Python
+        uses: actions/setup-python@v2  # Set up Python environment
+        with:
+          python-version: '3.11'  # Specify the Python version
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pylint  # Install pylint
+
+      - name: Run pylint
+        run: pylint Flask_Image_Recognition  # Replace with your actual code directory
+
+  test:
+    runs-on: windows-latest  # Run on the latest version of Windows
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2  # Checkout the repository
+
+      - name: Set up Python
+        uses: actions/setup-python@v2  # Set up Python environment
+        with:
+          python-version: '3.11'  # Specify the Python version
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest  # Install pytest
+
+      - name: Run pytest
+        run: pytest tests_main.py  # Ensure this points to your tests folder
