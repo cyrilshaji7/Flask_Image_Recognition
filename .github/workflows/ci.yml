@@ -1,9 +1,11 @@
 name: CI Pipeline
 
-on: [push, pull_request]  # Triggers on push and pull request events
+on: 
+  push:        # Triggers on push events
+  pull_request:  # Triggers on pull request events
 
 jobs:
-  lint:
+  lint_and_test:
     runs-on: windows-latest  # Run on the latest version of Windows
 
     steps:
@@ -18,27 +20,10 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install pylint  # Install pylint
+          pip install flask pylint pytest  # Install Flask, pylint, and pytest
 
       - name: Run pylint
-        run: pylint .  # Replace with your actual code directory
-
-  test:
-    runs-on: windows-latest  # Run on the latest version of Windows
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2  # Checkout the repository
-
-      - name: Set up Python
-        uses: actions/setup-python@v2  # Set up Python environment
-        with:
-          python-version: '3.11'  # Specify the Python version
-
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install pytest  # Install pytest
+        run: pylint .  # Lint the code in the current directory
 
       - name: Run pytest
-        run: pytest tests_main.py  # Ensure this points to your tests folder
+        run: pytest tests_main.py  # Run your tests
