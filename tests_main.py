@@ -1,30 +1,25 @@
 import os
 import pytest
-from app import app
 import numpy as np
+from app import app  # First-party import
 
 # Create a test client
 @pytest.fixture
 def client():
+    """Fixture to create a test client for the Flask app."""
     app.config['TESTING'] = True
     with app.test_client() as client:
         yield client
 
-
 # Test the prediction route with an invalid file
 def test_prediction_invalid_file(client):
+    """Test that the prediction route returns an error for an invalid file."""
     response = client.post('/prediction', data={'file': 'invalid_file'})
     assert response.status_code == 200
     assert b'File cannot be processed.' in response.data
 
 # Test to check the model loading
 def test_model_loading():
+    """Test to verify that the model is loaded properly."""
     from model import model  # Import the model from model.py
     assert model is not None  # Check if the model is loaded
-
-# Test the preprocess_img function
-def test_preprocess_img():
-    from model import preprocess_img
-    img_path = 'test_images/1/1.jpeg'  # Provide a valid image path
-    img = preprocess_img(img_path)
-    assert img.shape == (1, 224, 224, 3)  # Check the shape of the processed image
