@@ -25,6 +25,6 @@ def test_model_loading():
 # Test the preprocess_img function
 def test_preprocess_img():
     from model import preprocess_img
-    img_path = 'test_images\\1\\1.jpeg'  # Provide a valid image path
+    img_path = 'test_images/1/1.jpeg'  # Provide a valid image path
     img = preprocess_img(img_path)
     assert img.shape == (1, 224, 224, 3)  # Check the shape of the processed image
