@@ -125,7 +125,7 @@ def test_acceptance_happy_path(client):
     """
     Happy path acceptance test for end-to-end prediction workflow.
     """
-    with open('test_images\\1\\1.jpeg', 'rb') as img_file:
+    with open('test_images/1/1.jpeg', 'rb') as img_file:
         img_bytes = BytesIO(img_file.read())
 
     # Send the image as a POST request
