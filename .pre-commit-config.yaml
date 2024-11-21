@@ -1,15 +1,12 @@
-repos:
-  - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.0.1
-    hooks:
-      - id: trailing-whitespace
-        enable: false  # Disable the trailing-whitespace hook
-      - id: end-of-file-fixer
-        enable: false  # Disable the end-of-file-fixer hook
-      - id: check-yaml  # This hook will remain enabled
+- repo: https://github.com/pre-commit/mirrors-pylint
+  rev: v2.15.0
+  hooks:
+    - id: pylint
 
-  - repo: https://github.com/pre-commit/mirrors-pylint
-    rev: v3.0.0a5
-    hooks:
-      - id: pylint
-        args: ["--disable=C0114", "--disable=C0301", "--disable=W0105", "--disable=E0611", "--disable=C0411", "--disable=W0621", "--disable=E0401", "--disable=E0015", "--disable=E0012"]
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v3.4.0
+  hooks:
+    - id: trailing-whitespace
+      disable: true  # This disables the trailing-whitespace hook
+    - id: end-of-file-fixer
+      disable: true  # This disables the end-of-file-fixer hook
