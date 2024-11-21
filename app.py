@@ -1,3 +1,5 @@
+from PIL import UnidentifiedImageError
+
 """
 app.py: Main application for image prediction using Flask.
 """
@@ -16,12 +18,11 @@ def main():
     """
     return render_template("index.html")
 
-# Prediction route
 @app.route('/prediction', methods=['POST'])
 def predict_image_file():
     """
     Process the uploaded image file and return predictions.
-    Handles FileNotFoundError and ValueError specifically,
+    Handles FileNotFoundError, ValueError, and OSError specifically,
     and catches other unexpected errors.
     """
     try:
@@ -29,7 +30,7 @@ def predict_image_file():
             img = preprocess_img(request.files['file'].stream)
             pred = predict_result(img)
             return render_template("result.html", predictions=str(pred))
-    except FileNotFoundError:  # Catch specific exceptions
+    except (FileNotFoundError, UnidentifiedImageError):  # Catch specific image identification errors
         error = "File cannot be processed."
         return render_template("result.html", err=error)
     except ValueError as ve:  # Catch specific value errors
