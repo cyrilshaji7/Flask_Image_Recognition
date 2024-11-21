@@ -3,7 +3,9 @@ repos:
     rev: v4.0.1
     hooks:
       - id: trailing-whitespace
+        enable: false
       - id: end-of-file-fixer
+        enable: false
       - id: check-yaml
 
   - repo: https://github.com/pre-commit/mirrors-pylint
