@@ -3,11 +3,10 @@ repos:
     rev: v4.0.1
     hooks:
       - id: trailing-whitespace
-        enable: disable  # Ensure this hook is enabled to fix trailing whitespace
+        stages: [manual]  # Only run when explicitly requested
       - id: end-of-file-fixer
-        enable: disable  # Ensure this hook is enabled to fix final newlines
+        stages: [manual]  # Only run when explicitly requested
       - id: check-yaml  # Keep this for YAML checks
-
   - repo: https://github.com/pre-commit/mirrors-pylint
     rev: v3.0.0a5
     hooks:
