@@ -3,3 +3,21 @@ repos:
     rev: v4.0.1
     hooks:
       - id: check-yaml  # Keep this for YAML checks
+  - repo: https://github.com/pre-commit/mirrors-pylint
+    rev: v3.0.0a5
+    hooks:
+      - id: pylint
+        args: [
+          "--disable=C0114",  # missing-module-docstring
+          "--disable=C0301",  # line-too-long
+          "--disable=W0105",  # pointless-string-statement
+          "--disable=E0611",  # no-name-in-module
+          "--disable=C0411",  # wrong-import-order
+          "--disable=W0621",  # redefined-outer-name
+          "--disable=E0401",  # import-error
+          "--disable=E0015",  # unworking-import
+          "--disable=E0012",  # bad-format-string-key
+          "--disable=W0718",  # broad-exception-caught
+          "--disable=C0303",  # trailing-whitespace
+          "--disable=C0304"   # missing-final-newline
+        ]
