@@ -1,11 +1,10 @@
+from flask import Flask, render_template, request
+from model import preprocess_img, predict_result
 from PIL import UnidentifiedImageError
 
 """
 app.py: Main application for image prediction using Flask.
 """
-
-from flask import Flask, render_template, request
-from model import preprocess_img, predict_result
 
 # Instantiate Flask app
 app = Flask(__name__)
@@ -33,15 +32,14 @@ def predict_image_file():
     except (FileNotFoundError, UnidentifiedImageError):  # Catch specific image identification errors
         error = "File cannot be processed."
         return render_template("result.html", err=error)
-    except ValueError as ve:  # Catch specific value errors
-        error = f"Value error: {str(ve)}"
+    except ValueError as value_error:  # Catch specific value errors
+        error = f"Value error: {str(value_error)}"
         return render_template("result.html", err=error)
-    except Exception as e:  # Catch other general exceptions
-        error = f"An unexpected error occurred: {str(e)}"
+    except Exception as exception:  # Catch other general exceptions
+        error = f"An unexpected error occurred: {str(exception)}"
         return render_template("result.html", err=error)
     return render_template("result.html")  # Ensure consistent return
 
 # Driver code
 if __name__ == "__main__":
-    
     app.run(port=9000, debug=True)

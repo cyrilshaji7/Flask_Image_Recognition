@@ -1,9 +1,3 @@
-"""
-tests_main.py - Test suite for the Flask application
-Contains unit tests for model loading, image preprocessing, prediction functionality,
-and route handling.
-"""
-
 import pytest
 from app import app
 from model import model, preprocess_img, predict_result
@@ -127,9 +121,6 @@ def test_layout_elements(client):
     assert b'jquery-3.3.1.slim.min.js' in response.data
 
 # Acceptance Test 1: Happy Path
-# Purpose: Validate the application correctly predicts the digit for a valid image file.
-# Scenario: A user uploads a valid image file, and the system should return a correct prediction.
-# Expected Output: HTTP 200 status and a valid prediction result (e.g., '1').
 def test_acceptance_happy_path(client):
     """
     Happy path acceptance test for end-to-end prediction workflow.
@@ -143,14 +134,9 @@ def test_acceptance_happy_path(client):
 
     # Assert HTTP status code is 200
     assert response.status_code == 200
-    # Assert the prediction result contains the expected digit ('1')
     assert b'1' in response.data
 
-
 # Acceptance Test 2: Sad Path
-# Purpose: Validate the application handles invalid input gracefully.
-# Scenario: A user uploads an invalid file (non-image data), and the system should return an error message.
-# Expected Output: HTTP 200 status and an error message ("File cannot be processed.").
 def test_acceptance_sad_path(client):
     """
     Sad path acceptance test for handling invalid input.
@@ -163,9 +149,4 @@ def test_acceptance_sad_path(client):
 
     # Assert HTTP status code is 200
     assert response.status_code == 200
-
-    # Check for the error message in the response data (it will be in HTML)
-    # The error message should appear inside the rendered HTML, possibly inside the <h2> or <div>
-    assert b'File cannot be processed.' in response.data  # The error message should be in the HTML content
-
-
+    assert b'File cannot be processed.' in response.data
