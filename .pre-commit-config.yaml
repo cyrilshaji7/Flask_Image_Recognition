@@ -10,4 +10,11 @@ repos:
     rev: v3.0.0a5
     hooks:
       - id: pylint
-        args: ["--disable=C0114,C0301,W0105,E0401"]
+        args: [
+          "--disable=C0114",  # Disable missing module docstring warning
+          "--disable=C0411",  # Disable import order warning
+          "--disable=W0621",  # Disable redefined outer name warning
+          "--disable=E0401",  # Disable import error warning
+          "--disable=E0015",  # Disable unrecognized option warning
+          "--disable=E0012"   # Disable bad option value warning
+        ]
