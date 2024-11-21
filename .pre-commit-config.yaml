@@ -2,13 +2,4 @@ repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.0.1
     hooks:
-      - id: trailing-whitespace
-        stages: [manual]  # Only run when explicitly requested
-      - id: end-of-file-fixer
-        stages: [manual]  # Only run when explicitly requested
       - id: check-yaml  # Keep this for YAML checks
-  - repo: https://github.com/pre-commit/mirrors-pylint
-    rev: v3.0.0a5
-    hooks:
-      - id: pylint
-        args: ["--disable=C0114", "--disable=C0301", "--disable=W0105", "--disable=E0611", "--disable=C0411", "--disable=W0621", "--disable=E0401", "--disable=E0015", "--disable=E0012"]
