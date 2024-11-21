@@ -1,28 +1,15 @@
+repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.0.1
     hooks:
-      - id: check-yaml
       - id: trailing-whitespace
         enable: false  # Disable the trailing-whitespace hook
       - id: end-of-file-fixer
         enable: false  # Disable the end-of-file-fixer hook
-      - id: check-yaml  # Keep this hook enabled
+      - id: check-yaml  # This hook will remain enabled
 
   - repo: https://github.com/pre-commit/mirrors-pylint
     rev: v3.0.0a5
     hooks:
       - id: pylint
         args: ["--disable=C0114", "--disable=C0301", "--disable=W0105", "--disable=E0611", "--disable=C0411", "--disable=W0621", "--disable=E0401", "--disable=E0015", "--disable=E0012"]
-        args:
-          # Disable the checks for trailing whitespace and final newline
-          - "--disable=C0303"  # Disable trailing-whitespace check
-          - "--disable=C0304"  # Disable missing-final-newline check
-          - "--disable=C0114"  # Other pylint checks you're disabling (e.g., docstring check)
-          - "--disable=C0301"  # Line too long
-          - "--disable=W0105"  # String contains too many spaces
-          - "--disable=E0611"  # Import not found
-          - "--disable=C0411"  # Import not at top of file
-          - "--disable=W0621"  # Redefining name from outer scope
-          - "--disable=E0401"  # Unable to import module
-          - "--disable=E0015"  # Invalid syntax
-          - "--disable=E0012"  # Other syntax issues
