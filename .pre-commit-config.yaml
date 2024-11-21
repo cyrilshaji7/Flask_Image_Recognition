@@ -1,12 +1,14 @@
-- repo: https://github.com/pre-commit/mirrors-pylint
-  rev: v2.15.0
-  hooks:
-    - id: pylint
+# .pre-commit-config.yaml
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v3.4.0  # Update to the desired version
+    hooks:
+      - id: trailing-whitespace
+        enable: false  # Disables the trailing-whitespace hook
+      - id: end-of-file-fixer
+        enable: false  # Disables the end-of-file-fixer hook
 
-- repo: https://github.com/pre-commit/pre-commit-hooks
-  rev: v3.4.0
-  hooks:
-    - id: trailing-whitespace
-      disable: true  # This disables the trailing-whitespace hook
-    - id: end-of-file-fixer
-      disable: true  # This disables the end-of-file-fixer hook
+  - repo: https://github.com/pre-commit/mirrors-pylint
+    rev: v2.15.0  # Ensure this is the correct version for pylint
+    hooks:
+      - id: pylint
