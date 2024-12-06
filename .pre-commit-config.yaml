@@ -19,5 +19,8 @@ repos:
           "--disable=E0012",  # bad-format-string-key
           "--disable=W0718",  # broad-exception-caught
           "--disable=C0303",  # trailing-whitespace
-          "--disable=C0304"   # missing-final-newline
+          "--disable=C0304",  # missing-final-newline
+          "--disable=C0115",
+          "--disable=E1101",
+          "--disable=C0103"  # locust files
         ]
